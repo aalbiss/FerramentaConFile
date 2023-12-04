@@ -1,14 +1,11 @@
-import java.io.FileInputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ferramenta {
 
 	private ArrayList<Articolo> ferramenta;
-	String nomeFile = "Prodotti.csv";
+	File nomeFile = new File("Prodotti.csv");
 
 	public Ferramenta() {
 		ferramenta = new ArrayList<Articolo>();

@@ -4,8 +4,6 @@ public class MainFerramenta {
 
 	public static void main(String[] args) {
 
-		UI u = new UI();
-
 		Scanner KB = new Scanner(System.in);
 		int selezione = 0;
 		Ferramenta f = new Ferramenta();
