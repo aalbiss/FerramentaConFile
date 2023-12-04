@@ -9,7 +9,7 @@ public class Utility {
 		System.out.println("----4:Vendi----------------------");
 		System.out.println("----5:Visualizza giacenza--------");
 		System.out.println("----6:Visualizza nome------------");
-		System.out.println("----7:Salva dal file-------------");
+//		System.out.println("----7:Importa file---------------");	//If you want to manually import a file uncomment this line
 		System.out.println("----9:Fine programma-------------");
 		System.out.print("Seleziona operazione da eseguire: ");
 	}

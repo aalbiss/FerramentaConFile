@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.Scanner;
 
 public class MainFerramenta {
@@ -7,6 +8,18 @@ public class MainFerramenta {
 		Scanner KB = new Scanner(System.in);
 		int selezione = 0;
 		Ferramenta f = new Ferramenta();
+
+		File nomeFile = new File("Prodotti.csv");
+
+		//If you want to manually import a file comment this lines and also check other files and in this file from row	48
+		if(f.emptyFile() && !nomeFile.isDirectory()){
+			f.inizializzaFile();
+		}
+		if(!f.emptyFile()){
+			f.leggi();
+		}
+		//---------------------------
+
 		do {
 			Utility.selezione();
 			selezione = KB.nextInt();
@@ -32,10 +45,11 @@ public class MainFerramenta {
 				case 6:
 					System.out.println(f.getNomeArt());
 					break;
-				case 7:
-					f.leggi();
-					break;
+//				case 7:
+//					f.leggi();				//Uncomment this file for manually import file
+//					break;
 				default:
+					System.out.println("Selezione non valida, reinserire");
 					break;
 			}
 		}while(selezione!=9);

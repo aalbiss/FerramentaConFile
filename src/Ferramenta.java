@@ -29,8 +29,6 @@ public class Ferramenta {
 		}
 		a.setCodiceArticolo(cA);
 
-
-
 		System.out.println("Inserire il nome dell'articolo");
 		nome = KB.nextLine();
 		a.setNomeArticolo(nome);
@@ -124,8 +122,6 @@ public class Ferramenta {
 			System.out.println("Non ci sono oggetti da vendere");
 		}
 
-
-
 	}
 
 	public double giacenza() {
@@ -193,8 +189,8 @@ public class Ferramenta {
 		System.out.println("--------------------------------------------------------");
 	}
 
-	public void scrivi(){
-
+	//	If you want to manually import a file comment this lines
+	public void inizializzaFile() {
 		try {
 			FileWriter fw = new FileWriter(nomeFile);
 			PrintWriter pw = new PrintWriter(fw);
@@ -203,22 +199,82 @@ public class Ferramenta {
 			pw.print("Nome" + ";");
 			pw.println("Giacenza");
 
-			for (Articolo articolo : ferramenta) {
-				pw.print(articolo.getCodiceArticolo() + ";");
-				pw.print(articolo.getNomeArticolo() + ";");
-				pw.println(articolo.getGiacenza());
-			}
-
 			fw.close();
 			pw.close();
 
-		} catch (IOException e) {
+		}catch (IOException e){
 			System.out.println("Eccezione " + e);
 		}
 	}
 
+	//	If you want to manually import a file comment this lines
+	public boolean emptyFile(){
+
+		boolean empty = true;
+
+		try {
+			FileInputStream fin = new FileInputStream(nomeFile);
+			Scanner in = new Scanner(fin);
+			int k = 0;
+			if (in.hasNextLine()){
+				empty = false;
+			}
+
+		} catch (IOException e) {
+			System.out.println("Eccezione " + e);
+		}
+
+		return empty;
+
+	}
+
+	//	If you want to manually import a file uncomment this lines
+//	public void scrivi(){
+//
+//		try {
+//			FileWriter fw = new FileWriter(nomeFile);
+//			PrintWriter pw = new PrintWriter(fw);
+//
+//			pw.print("Codice" + ";");
+//			pw.print("Nome" + ";");
+//			pw.println("Giacenza");
+//
+//			for (Articolo articolo : ferramenta) {
+//				pw.print(articolo.getCodiceArticolo() + ";");
+//				pw.print(articolo.getNomeArticolo() + ";");
+//				pw.println(articolo.getGiacenza());
+//			}
+//
+//			fw.close();
+//			pw.close();
+//
+//		} catch (IOException e) {
+//			System.out.println("Eccezione " + e);
+//		}
+//
+//	}
+
+//	If you want to manually import a file comment this lines
+	public void scrivi(){
+
+		try {
+			FileWriter fw = new FileWriter(nomeFile,true);
+			PrintWriter pw = new PrintWriter(fw);
+
+			pw.print(ferramenta.get(ferramenta.size()-1).getCodiceArticolo() + ";");
+			pw.print(ferramenta.get(ferramenta.size()-1).getNomeArticolo() + ";");
+			pw.println(ferramenta.get(ferramenta.size()-1).getGiacenza());
+
+			fw.close();
+			pw.close();
+
+		}catch (IOException e){
+			System.out.println("Eccezione " + e);
+		}
+
+	}
+
 	public void leggi(){
-		String nomeFile = "Prodotti.csv";
 
 		try {
 			FileInputStream fin = new FileInputStream(nomeFile);
@@ -242,6 +298,8 @@ public class Ferramenta {
 		} catch (IOException e) {
 			System.out.println("Eccezione " + e);
 		}
+
+		System.out.println("File importato");
 
 	}
 
